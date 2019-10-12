@@ -72,6 +72,9 @@ namespace UDPClientTest
                 }
             }
 
+            byte[] endFlag = { 0x11 };
+            udpClient.SendTo(endFlag, serverIPAddress);
+
             Console.WriteLine("H264数据已经通过打包为RTP Package并基于UDP发送到服务器端.");
 
         }

@@ -1,0 +1,11 @@
+D:\vsProject\VS2019Project\UDPTest\UDPTest\bin\Debug\netcoreapp3.0\UDPServerTest.exe
+D:\vsProject\VS2019Project\UDPTest\UDPTest\bin\Debug\netcoreapp3.0\UDPServerTest.deps.json
+D:\vsProject\VS2019Project\UDPTest\UDPTest\bin\Debug\netcoreapp3.0\UDPServerTest.runtimeconfig.json
+D:\vsProject\VS2019Project\UDPTest\UDPTest\bin\Debug\netcoreapp3.0\UDPServerTest.runtimeconfig.dev.json
+D:\vsProject\VS2019Project\UDPTest\UDPTest\bin\Debug\netcoreapp3.0\UDPServerTest.dll
+D:\vsProject\VS2019Project\UDPTest\UDPTest\bin\Debug\netcoreapp3.0\UDPServerTest.pdb
+D:\vsProject\VS2019Project\UDPTest\UDPTest\obj\Debug\netcoreapp3.0\UDPServerTest.csprojAssemblyReference.cache
+D:\vsProject\VS2019Project\UDPTest\UDPTest\obj\Debug\netcoreapp3.0\UDPServerTest.AssemblyInfoInputs.cache
+D:\vsProject\VS2019Project\UDPTest\UDPTest\obj\Debug\netcoreapp3.0\UDPServerTest.AssemblyInfo.cs
+D:\vsProject\VS2019Project\UDPTest\UDPTest\obj\Debug\netcoreapp3.0\UDPServerTest.dll
+D:\vsProject\VS2019Project\UDPTest\UDPTest\obj\Debug\netcoreapp3.0\UDPServerTest.pdb

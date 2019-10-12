@@ -180,12 +180,16 @@ namespace UDPClientTest.RTPProtocol
                 fregmentRTPBytes[13] = Convert.ToByte((0x1f & sourceNALU[0]) + 128);
             }
             //若为最后一个分片
-            if (currentFregmentNumber == totalFregmentNumber)
+            else if (currentFregmentNumber == totalFregmentNumber)
             {
                 fregmentRTPBytes[13] = Convert.ToByte((0x1f & sourceNALU[0]) + 64);
             }
             //若为中间分片
-            fregmentRTPBytes[13] = Convert.ToByte((0x1f & sourceNALU[0]));
+            else
+            {
+                fregmentRTPBytes[13] = Convert.ToByte((0x1f & sourceNALU[0]));
+            }
+
 
             #endregion
 

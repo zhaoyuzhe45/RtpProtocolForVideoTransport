@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 using UDPClientTest.RTPProtocol;
 
 namespace UDPClientTest
@@ -13,22 +14,27 @@ namespace UDPClientTest
             //建立UDPClientSocket,参数2：udp协议以数据报的方式传输，参数3：UDP协议
             Socket udpClient = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-            IPAddress ip = IPAddress.Parse(GetLocalAddress(5));
+            IPAddress ip = IPAddress.Parse(GetLocalAddress(3));
 
             EndPoint serverIPAddress = new IPEndPoint(ip, 43999);
 
             Console.WriteLine("开始基于UDP传输RTP数据报....");
 
             //先获取H.264视频流字节组
-            var sourceH264Bytes = ConvertFileToByte(@"E:\研二上学期\项目\VideoTransport\裸码流\normalStream.264");
+            var sourceH264Bytes = ConvertFileToByte(@"E:\研二上学期\项目\VideoTransport\裸码流\video2.h264");
 
             int index = 0;
             int sequenceNumber = 0;
+            long rtpCount = 0;
             //输入客户端需要发送给服务端的信息
             while (true)
             {
                 //获取到其中的一个NALU
-                var oneNaluBytes = ProtocolHelper.GetPerNALU(sourceH264Bytes, ref index, out int startCodeLength);
+                var oneNaluBytes = ProtocolHelper.GetPerNALU(sourceH264Bytes, ref index,ref rtpCount, out int startCodeLength);
+                rtpCount++;
+                Console.SetCursorPosition(0, 1);
+                Console.Write("已发送{0}个RTP Package ", rtpCount);
+                Thread.Sleep(5);
                 //从新给索引赋值以便下一次遍历
                 index += oneNaluBytes.Length + startCodeLength;
 
@@ -40,6 +46,7 @@ namespace UDPClientTest
 
                     for(int i = 1; i <= fregmentCount; i++)
                     {
+                        Thread.Sleep(5);
                         //分片nalu长度
                         int fregmentNaluLength;
                         if (i < fregmentCount)

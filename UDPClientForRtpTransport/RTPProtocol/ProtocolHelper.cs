@@ -13,7 +13,7 @@ namespace UDPClientTest.RTPProtocol
         /// <param name="index">此时遍历到H.264源码中的索引位置</param>
         /// <param name="startCodeLength">起始码的长度</param>
         /// <returns>去掉起始码的NALU</returns>
-        public static byte[] GetPerNALU(byte[] sourcebytes,ref int index,out int startCodeLength)
+        public static byte[] GetPerNALU(byte[] sourcebytes,ref int index, ref long rtpCount, out int startCodeLength)
         {
 
             //一个NALU的长度
@@ -31,16 +31,14 @@ namespace UDPClientTest.RTPProtocol
             }
 
             //确定起始码的长度
-            startByteLength = sourcebytes[index] == 0x00 && sourcebytes[index + 1] == 0x00 && sourcebytes[index + 2] == 0x00 && sourcebytes[index + 3] == 0x01
-                    ? 4 : 3;
+            startByteLength =4;
 
             //从除开第一个起始字节开始进行遍历查询到下一个起始码
             for (int i = index+3; i < sourcebytes.Length; i++)
             {
                 
                 //查询到下一个的起始码
-                if ((sourcebytes[i]==0x00&&sourcebytes[i+1]==0x00&&sourcebytes[i+2]==0x00&&sourcebytes[i+3]==0x01)
-                    ||(sourcebytes[i] == 0x00 && sourcebytes[i + 1] == 0x00 && sourcebytes[i + 2] == 0x01))
+                if ((sourcebytes[i]==0x00&&sourcebytes[i+1]==0x00&&sourcebytes[i+2]==0x00&&sourcebytes[i+3]==0x01))
                 {
                     oneNaluLength = i - index - startByteLength;
                     break;

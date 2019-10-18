@@ -31,8 +31,7 @@
         "netcoreapp3.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "E:\\研二上学期\\项目\\BlogDemo\\BlogDemoV2.Api\\My_CSharp_Packages": {}
+        "http://packagesource": {}
       },
       "frameworks": {
         "netcoreapp3.0": {
